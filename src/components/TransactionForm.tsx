@@ -42,14 +42,14 @@ export function TransactionForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-zinc-800 p-6 rounded-xl mt-8 space-y-4"
-    >
+      className="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 space-y-4">
       <input
         type="text"
         placeholder="Título"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        className="w-full p-3 rounded bg-zinc-900 text-zinc-100 outline-none"
+        className="w-full border border-zinc-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#7F3DFF] text-black"
+
       />
 
       <input
@@ -57,13 +57,13 @@ export function TransactionForm() {
         placeholder="Valor"
         value={amount}
         onChange={e => setAmount(e.target.value)}
-        className="w-full p-3 rounded bg-zinc-900 text-zinc-100 outline-none"
+        className="w-full border border-zinc-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#7F3DFF] text-black"
       />
 
       <select
         value={type}
         onChange={e => setType(e.target.value as TransactionType)}
-        className="w-full p-3 rounded bg-zinc-900 text-zinc-100 outline-none"
+        className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:ring-2 focus:ring-[#7F3DFF] outline-none transition text-black"
       >
         <option value="income">Receita</option>
         <option value="expense">Despesa</option>
@@ -74,7 +74,7 @@ export function TransactionForm() {
         placeholder="Categoria"
         value={category}
         onChange={e => setCategory(e.target.value)}
-        className="w-full p-3 rounded bg-zinc-900 text-zinc-100 outline-none"
+        className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:ring-2 focus:ring-[#7F3DFF] outline-none transition text-black"
       />
 
       <input
@@ -82,12 +82,12 @@ export function TransactionForm() {
         placeholder="Descrição"
         value={description}
         onChange={e => setDescription(e.target.value)}
-        className="w-full p-3 rounded bg-zinc-900 text-zinc-100 outline-none"
+        className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:ring-2 focus:ring-[#7F3DFF] outline-none transition text-black"
       />
 
       <button
         type="submit"
-        className="w-full bg-indigo-600 hover:bg-indigo-700 transition p-3 rounded font-semibold"
+        className="w-full bg-[#7F3DFF] hover:bg-[#5B21B6] text-white py-3 rounded-xl font-semibold transition"
       >
         Salvar
       </button>

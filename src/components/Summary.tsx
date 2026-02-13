@@ -1,10 +1,12 @@
 'use client'
 
-import { useTransactions } from '@/context/TransactionsContext'
+import { Transaction } from '@/types/Transaction'
 
-export function Summary() {
-  const { transactions } = useTransactions()
+interface SummaryProps {
+  transactions: Transaction[]
+}
 
+export function Summary({ transactions }: SummaryProps) {
   const summary = transactions.reduce(
     (acc, transaction) => {
       if (transaction.type === 'income') {
@@ -14,41 +16,35 @@ export function Summary() {
         acc.expense += transaction.amount
         acc.total -= transaction.amount
       }
-
       return acc
     },
-    {
-      income: 0,
-      expense: 0,
-      total: 0,
-    }
+    { income: 0, expense: 0, total: 0 }
   )
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-      {/* Receitas */}
-      <div className="bg-zinc-800 p-6 rounded-xl">
-        <p className="text-zinc-400">Receitas</p>
-        <strong className="text-2xl text-green-400">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      
+      <div className="bg-[#7F3DFF] text-white p-6 rounded-2xl shadow-lg">
+        <p className="text-[#ffffff] font-bold">Receitas</p>
+        <strong className="text-2xl text-green-500">
           R$ {summary.income.toFixed(2)}
         </strong>
       </div>
 
-      {/* Despesas */}
-      <div className="bg-zinc-800 p-6 rounded-xl">
-        <p className="text-zinc-400">Despesas</p>
-        <strong className="text-2xl text-red-400">
+      <div className="bg-[#7F3DFF] p-6 rounded-2xl shadow-md">
+        <p className="text-[#ffffff] font-bold">Despesas</p>
+        <strong className="text-2xl text-red-500">
           R$ {summary.expense.toFixed(2)}
         </strong>
       </div>
 
-      {/* Saldo */}
-      <div className="bg-zinc-800 p-6 rounded-xl">
-        <p className="text-zinc-400">Saldo</p>
-        <strong className="text-2xl text-blue-400">
+      <div className="bg-[#7F3DFF] p-6 rounded-2xl shadow-md">
+        <p className="text-[#ffffff] font-bold">Saldo</p>
+        <strong className="text-2xl text-[#ffffff]">
           R$ {summary.total.toFixed(2)}
         </strong>
       </div>
+
     </section>
   )
 }
